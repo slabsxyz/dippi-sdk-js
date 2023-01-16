@@ -1,3 +1,12 @@
+'use strict';
+
+import {
+    Auth,
+    User,
+    Wallet,
+    Application,
+    ApplicationToken,
+} from './resources';
 
 export class Dippi {
     /*
@@ -13,6 +22,13 @@ export class Dippi {
         this.password = config.password;
         this.url = config.url;
         this.authToken = config.authToken;
+
+        // Attach resources to the client
+        this.auth = new Auth(this);
+        this.user = new User(this);
+        this.wallet = new Wallet(this);
+        this.application = new Application(this);
+        this.applicationToken = new ApplicationToken(this);
     }
 
     async setAuthToken (newAuthToken) {
