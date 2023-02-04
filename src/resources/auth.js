@@ -1,4 +1,4 @@
-export class Auth {
+class Auth {
     /*
     * @param {Object}
     */
@@ -13,16 +13,19 @@ export class Auth {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.client.authToken}`
                 },
                 body: JSON.stringify(
                     {
                         email: this.client.email,
                         password: this.client.password,
+                        apiToken: this.client.authToken
                     }
                 ),
             }
         )
-
         return await response.json();
     }
 }
+
+module.exports = Auth;
