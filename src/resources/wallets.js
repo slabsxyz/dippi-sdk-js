@@ -1,4 +1,4 @@
-export class Wallet {
+class Wallet {
     constructor(client) {
         this.client = client;
     }
@@ -110,3 +110,5 @@ export class Wallet {
         return await response.json();
     }
 }
+
+module.exports = Wallet;

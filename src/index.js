@@ -1,3 +1,4 @@
-export { Dippi } from './dippi';
-
-export default Dippi
+const { Dippi } = require('./dippi');
+module.exports = {
+    Dippi,
+};

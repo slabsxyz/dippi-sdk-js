@@ -1,4 +1,4 @@
-export class User {
+class User {
     constructor(client) {
         this.client = client;
     }
@@ -34,3 +34,5 @@ export class User {
         return await response.json();
     }
 }
+
+module.exports = User;

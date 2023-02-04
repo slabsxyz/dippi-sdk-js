@@ -1,14 +1,12 @@
 'use strict';
 
-import {
-    Auth,
-    User,
-    Wallet,
-    Application,
-    ApplicationToken,
-} from './resources';
+const Auth = require('./resources/auth');
+const User = require('./resources/user');
+const Wallet = require('./resources/wallets');
+const Application = require('./resources/applications');
+const ApplicationToken = require('./resources/application-tokens');
 
-export class Dippi {
+class Dippi {
     /*
     * @param {Object} config
     * @param {String} config.email
@@ -35,3 +33,5 @@ export class Dippi {
         this.authToken = newAuthToken
     }
 }
+
+module.exports = Dippi;

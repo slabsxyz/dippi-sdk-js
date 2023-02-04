@@ -1,4 +1,4 @@
-export class Application {
+class Application {
     constructor(client) {
         this.client = client;
     }
@@ -65,3 +65,5 @@ export class Application {
         return await response.json();
     }
 }
+
+module.exports = Application;

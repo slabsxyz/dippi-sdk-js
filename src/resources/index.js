@@ -1,5 +1,13 @@
-export { User } from './user';
-export { Auth } from './auth';
-export { Wallet } from './wallet';
-export { Application } from './application';
-export { ApplicationToken } from './application-token';
+const { User } = require('./user');
+const { Auth } = require('./auth');
+const { Wallet } = require('./wallet');
+const { Application } = require('./application');
+const { ApplicationToken } = require('./application-token');
+
+module.exports = {
+    User,
+    Auth,
+    Wallet,
+    Application,
+    ApplicationToken,
+};
