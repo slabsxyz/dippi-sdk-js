@@ -2,7 +2,7 @@
   "name": "@dippi/sdk",
   "version": "0.0.0",
   "description": "Dippi SDK",
-  "main": "index.js",
+  "main": "src/dippi.js",
   "repository": "git@github.com:Dippii/dippi-sdk-js.git",
   "author": "martin@dippi.xyz",
   "license": "MIT",

@@ -1,5 +1,12 @@
+'use strict';
 
-export class Dippi {
+const Auth = require('./resources/auth');
+const User = require('./resources/user');
+const Wallet = require('./resources/wallets');
+const Application = require('./resources/applications');
+const ApplicationToken = require('./resources/application-tokens');
+
+class Dippi {
     /*
     * @param {Object} config
     * @param {String} config.email
@@ -13,9 +20,18 @@ export class Dippi {
         this.password = config.password;
         this.url = config.url;
         this.authToken = config.authToken;
+
+        // Attach resources to the client
+        this.auth = new Auth(this);
+        this.user = new User(this);
+        this.wallet = new Wallet(this);
+        this.application = new Application(this);
+        this.applicationToken = new ApplicationToken(this);
     }
 
     async setAuthToken (newAuthToken) {
         this.authToken = newAuthToken
     }
 }
+
+module.exports = Dippi;

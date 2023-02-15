@@ -1,11 +1,11 @@
-class Wallet {
+class ApplicationToken {
     constructor(client) {
         this.client = client;
     }
 
     async list () {
         const response = await fetch(
-            `${this.client.url}/v1/wallets`,
+            `${this.client.url}/v1/application-tokens`,
             {
                 method: 'GET',
                 headers: {
@@ -20,7 +20,7 @@ class Wallet {
 
     async create (data) {
         const response = await fetch(
-            `${this.client.url}/v1/wallets`,
+            `${this.client.url}/v1/application-tokens`,
             {
                 method: 'POST',
                 headers: {
@@ -36,7 +36,7 @@ class Wallet {
 
     async retrieve (id) {
         const response = await fetch(
-            `${this.client.url}/v1/wallets/${id}`,
+            `${this.client.url}/v1/application-tokens/${id}`,
             {
                 method: 'GET',
                 headers: {
@@ -51,7 +51,7 @@ class Wallet {
 
     async update (id, data) {
         const response = await fetch(
-            `${this.client.url}/v1/wallets/${id}`,
+            `${this.client.url}/v1/application-tokens/${id}`,
             {
                 method: 'PATCH',
                 headers: {
@@ -64,51 +64,6 @@ class Wallet {
 
         return await response.json();
     }
-
-    async recovery (id) {
-        const response = await fetch(
-            `${this.client.url}/v1/wallets/${id}/recovery`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
-                },
-            }
-        )
-
-        return await response.json();
-    }
-
-    async balance (id) {
-        const response = await fetch(
-            `${this.client.url}/v1/wallets/${id}/balance`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
-                },
-            }
-        )
-
-        return await response.json();
-    }
-
-    async nfts (id) {
-        const response = await fetch(
-            `${this.client.url}/v1/wallets/${id}/nfts`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
-                },
-            }
-        )
-
-        return await response.json();
-    }
 }
 
-module.exports = Wallet;
+module.exports = ApplicationToken;
