@@ -8,18 +8,16 @@ class Auth {
 
     async login () {
         const response = await fetch(
-            `${this.client.url}/v1/auth/login`,
+            `${this.client.url}/v1/auth/external-signup`,
             {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
                 },
                 body: JSON.stringify(
                     {
-                        email: this.client.email,
-                        password: this.client.password,
-                        apiToken: this.client.authToken
+                        token: this.client.appToken,
+                        applicationId: this.client.appId,
                     }
                 ),
             }

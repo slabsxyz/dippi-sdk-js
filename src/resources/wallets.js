@@ -5,7 +5,7 @@ class Wallet {
 
     async list () {
         const response = await fetch(
-            `${this.client.url}/v1/wallets`,
+            `${this.client.url}/v1/wallets/list-by-app`,
             {
                 method: 'GET',
                 headers: {
@@ -18,21 +18,6 @@ class Wallet {
         return await response.json();
     }
 
-    async create (data) {
-        const response = await fetch(
-            `${this.client.url}/v1/wallets`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
-                },
-                body: JSON.stringify(data),
-            }
-        )
-
-        return await response.json();
-    }
 
     async retrieve (id) {
         const response = await fetch(
@@ -65,7 +50,7 @@ class Wallet {
         return await response.json();
     }
 
-    async recovery (id) {
+    async recovery (id, data) {
         const response = await fetch(
             `${this.client.url}/v1/wallets/${id}/recovery`,
             {
@@ -74,6 +59,7 @@ class Wallet {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${this.client.authToken}`
                 },
+                body: JSON.stringify(data)
             }
         )
 

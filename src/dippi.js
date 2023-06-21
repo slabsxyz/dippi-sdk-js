@@ -16,8 +16,8 @@ class Dippi {
     * @param {String} config.clientId
     */
     constructor(config) {
-        this.email = config.email;
-        this.password = config.password;
+        this.appToken = config.appToken;
+        this.appId = config.appId;
         this.url = config.url;
         this.authToken = config.authToken;
 

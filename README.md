@@ -11,15 +11,20 @@ npm install @dippi/sdk
 ## Usage
 
 ```js
-const { Dippi } = require('@dippi/sdk');
+const Dippi = require('@dippixyz/sdk');
 
-const dippiClient = new Dippi();
-const { accessToken } = await dippiClient.auth.login('username', 'password');
+const dippiClient = new Dippi({
+    appToken: process.env.APP_TOKEN,
+    appId: process.env.APP_ID,
+    url: process.env.CLIENT_URL,
+});
+
+const { accessToken } = await dippiClient.auth.login();
 dippiClient.setAuthToken(accessToken);
 
-const userProfile = await dippiClient.users.getProfile();
+const userProfile = await dippiClient.user.getProfile();
 
-const userWallets = await dippiClient.wallets.list();
-const userApplicaitons = await dippiClient.applications.list();
-const userApplicaitonTokens = await dippiClient.applicationTokens.list();
+const userWallets = await dippiClient.wallet.list();
+const userApplicaitons = await dippiClient.application.list();
+const userApplicationToken = await dippiClient.applicationToken.retrieve(id);
 ```
