@@ -5,7 +5,7 @@ This is the Dippi SDK for JavaScript. It is a wrapper around the Dippi API.
 ## Installation
 
 ```bash
-npm install @dippi/sdk
+npm i @dippixyz/sdk
 ```
 
 ## Usage
