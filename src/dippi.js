@@ -3,6 +3,7 @@
 const Auth = require('./resources/auth');
 const User = require('./resources/user');
 const Wallet = require('./resources/wallets');
+const TokenAccountFunc = require('./resources/TokenAccountFunc');
 const Application = require('./resources/applications');
 const ApplicationToken = require('./resources/application-tokens');
 
@@ -25,6 +26,7 @@ class Dippi {
         this.auth = new Auth(this);
         this.user = new User(this);
         this.wallet = new Wallet(this);
+        this.TokenAccountFunc = new TokenAccountFunc(this);
         this.application = new Application(this);
         this.applicationToken = new ApplicationToken(this);
     }
