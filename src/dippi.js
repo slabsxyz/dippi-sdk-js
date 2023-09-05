@@ -6,15 +6,17 @@ const Wallet = require('./resources/wallets');
 const TokenBoundAccount = require('./resources/tokenBoundAccount');
 const Application = require('./resources/applications');
 const ApplicationToken = require('./resources/application-tokens');
-
+/**
+ * Represents the main Dippi client class.
+ */
 class Dippi {
-    /*
-    * @param {Object} config
-    * @param {String} config.email
-    * @param {String} config.password
-    * @param {String} config.url
-    * @param {String} config.authToken
-    * @param {String} config.clientId
+    /**
+    * @param {Object} config Configuration object.
+    * @param {String} config.email User's email.
+    * @param {String} config.password User's password.
+    * @param {String} config.url API URL.
+    * @param {String} config.authToken Authentication token.
+    * @param {String} config.clientId Client ID.
     */
     constructor(config) {
         this.appToken = config.appToken;
@@ -67,7 +69,7 @@ class TBA {
     
     /**
      * initializes arguments.
-     * @init
+     * @alias init
      * @param {object} { destinationWallet, nftContract, nftId } - An object containing threee parameters: destination wallet, NFT drop contract and NFT id . 
      */ 
     
@@ -80,7 +82,7 @@ class TBA {
 
      /**
      * create tokenBoundAccount.
-     * @create
+     * @alias create
      * - Delivers an NFT with a token bound account if a wallet address is provided.
         If a wallet address, NFT drop contract address and NFT token id are provided, a token bound account is created for the NFT with provided NFT token id.  . 
      */ 
