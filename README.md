@@ -5,7 +5,7 @@ This is the Dippi SDK for JavaScript. It is a wrapper around the Dippi API.
 ## Installation
 
 ```bash
-npm install @dippi/sdk
+npm i @dippixyz/sdk
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ const dippiClient = new Dippi({
 const { accessToken } = await dippiClient.auth.login();
 dippiClient.setAuthToken(accessToken);
 
-const userProfile = await dippiClient.user.getProfile();
+const userProfile = await dippiClient.user.getProfile(id);
 
 const userWallets = await dippiClient.wallet.list();
 const userApplicaitons = await dippiClient.application.list();

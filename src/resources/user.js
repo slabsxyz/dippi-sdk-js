@@ -18,7 +18,7 @@ class User {
      */
     async getProfile () {
         const response = await fetch(
-            `${this.client.url}/v1/me`,
+            `${this.client.url}/v1/users/${id}`,
             {
                 method: 'GET',
                 headers: {

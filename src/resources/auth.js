@@ -37,6 +37,26 @@ class Auth {
         )
         return await response.json();
     }
+
+    async getUrl () {
+        const response = await fetch(
+            `${this.client.url}/v1/auth/get-url`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(
+                    {
+                        token: this.client.appToken,
+                        applicationId: this.client.appId,
+                        urlReturn: this.client.urlReturn,
+                    }
+                ),
+            }
+        )
+        return await response.json();
+    }
 }
 
 module.exports = Auth;

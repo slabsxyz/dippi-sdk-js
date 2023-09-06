@@ -1,10 +1,10 @@
 {
   "name": "@dippixyz/sdk",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Dippi SDK",
   "main": "src/dippi.js",
-  "repository": "git@github.com:Dippii/dippi-sdk-js.git",
-  "author": "martin@dippi.xyz",
+  "repository": "https://github.com/dippixyz/dippi-sdk-js.git",
+  "author": "victor@dippi.xyz",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^8.31.0",
