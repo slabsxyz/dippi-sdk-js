@@ -1,4 +1,4 @@
-const { Dippi } = require('./dippi');
+const { Dippi, TBA } = require('./dippi');
 module.exports = {
-    Dippi,
+    Dippi, TBA
 };
