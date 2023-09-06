@@ -6,17 +6,20 @@ const Wallet = require('./resources/wallets');
 const TokenBoundAccount = require('./resources/tokenBoundAccount');
 const Application = require('./resources/applications');
 const ApplicationToken = require('./resources/application-tokens');
+
 /**
  * Represents the main Dippi client class.
  */
 class Dippi {
     /**
-    * @param {Object} config Configuration object.
-    * @param {String} config.email User's email.
-    * @param {String} config.password User's password.
-    * @param {String} config.url API URL.
-    * @param {String} config.authToken Authentication token.
-    * @param {String} config.clientId Client ID.
+    * Initializes a new instance of the Dippi class.
+    * 
+    * @param {Object} config - Configuration object.
+    * @param {String} config.email - User's email.
+    * @param {String} config.password - User's password.
+    * @param {String} config.url - API URL.
+    * @param {String} config.authToken - Authentication token.
+    * @param {String} config.clientId - Client ID.
     */
     constructor(config) {
         this.appToken = config.appToken;
@@ -28,29 +31,35 @@ class Dippi {
         this.auth = new Auth(this);
         this.user = new User(this);
         this.wallet = new Wallet(this);
-        // this.tokenBoundAccount = new TokenBoundAccount(this);
         this.application = new Application(this);
         this.applicationToken = new ApplicationToken(this);
     }
 
+    /**
+     * Updates the authentication token.
+     * 
+     * @param {String} newAuthToken - New authentication token.
+     */
     async setAuthToken (newAuthToken) {
         this.authToken = newAuthToken
     }
 
 }
 
-class TBA {
-
-    
+/**
+ * Represents the Token Bound Account (TBA) class.
+ */
+class TBA {  
     /**
-     * initializes arguments.
-     * @constructor
-     * @param {string} appToken - DippiClient configuration {authToken: "AUTHTOKEN"} . 
-     * @param {string} appId - DippiClient configuration application Id {appId: "APPID"} . 
-     * @param {string} url - DippiClient configuration url {url: "dippi.xyz"} . 
-     * @param {object} auth - DippiClient configuration auth function {auth()} . 
-     * @param {object} _tokenBoundAccount - DippiClient configuration _tokenBoundAccount{_tokenBoundAccount} . 
-     */ 
+    * Initializes a new instance of the TBA class.
+    * 
+    * @param {Object} config - Configuration object.
+    * @param {String} config.appToken - DippiClient authentication token.
+    * @param {String} config.appId - DippiClient application ID.
+    * @param {String} config.url - DippiClient API URL.
+    * @param {Object} config.auth - DippiClient authentication object.
+    * @param {Object} config._tokenBoundAccount - DippiClient Token Bound Account configuration.
+    */
     constructor(config) {
         this.appToken = config.appToken;
         this.appId = config.appId;
@@ -61,18 +70,27 @@ class TBA {
         this._tokenBoundAccount = new TokenBoundAccount(this);
     }
 
-    
-
+    /**
+     * Updates the authentication token.
+     * 
+     * @param {String} newAuthToken - New authentication token.
+     */
     async setAuthToken (newAuthToken) {
         this.authToken = newAuthToken
     }
     
     /**
-     * initializes arguments.
-     * @alias init
-     * @param {object} { destinationWallet, nftContract, nftId } - An object containing threee parameters: destination wallet, NFT drop contract and NFT id . 
-     */ 
-    
+     * Initializes the TBA with the provided parameters.
+     * 
+     * @typedef InitArgs
+     * @type {Object}
+     * @property {String} destinationWallet - Destination wallet address.
+     * @property {String} nftContract - NFT contract address.
+     * @property {String} nftId - NFT ID.
+     * 
+     * @param {InitArgs} args - Initialization arguments.
+     * @returns {Promise<Object>} - The result of the initialization.
+     */
     async init(args) {
         const { accessToken } = await this.auth.login();
         this.authToken = accessToken
@@ -80,21 +98,17 @@ class TBA {
     } 
 
 
-     /**
-     * create tokenBoundAccount.
-     * @alias create
-     * - Delivers an NFT with a token bound account if a wallet address is provided.
-        If a wallet address, NFT drop contract address and NFT token id are provided, a token bound account is created for the NFT with provided NFT token id.  . 
+    /**
+     * Creates a TokenBoundAccount.
+     * Delivers an NFT with a token-bound account if a wallet address is provided.
+     * If a wallet address, NFT drop contract address, and NFT token ID are provided,
+     * a token-bound account is created for the NFT with the provided NFT token ID.
+     * 
+     * @returns {Promise<Object>} - The result of the creation.
      */ 
     async create() {
         return this._tokenBoundAccount.create();
-    } 
-
-
-
-
-    
+    }
 }
 
-module.exports = Dippi;
-module.exports = TBA;
+module.exports = { Dippi, TBA };
