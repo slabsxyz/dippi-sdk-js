@@ -141,7 +141,7 @@ Make sure to replace the placeholders in the code with your actual data. Save th
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://link_to_contributing.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/dippixyz/dippi-sdk-js/blob/develop/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
 
