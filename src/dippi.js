@@ -24,6 +24,7 @@ class Dippi {
         this.appId = config.appId;
         this.url = config.url;
         this.authToken = config.authToken;
+        this.urlReturn = config.urlReturn;
 
         // Attach resources to the client
         this.auth = new Auth(this);
