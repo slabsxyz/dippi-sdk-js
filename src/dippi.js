@@ -15,11 +15,9 @@ class Dippi {
     * Initializes a new instance of the Dippi class.
     * 
     * @param {Object} config - Configuration object.
-    * @param {String} config.email - User's email.
-    * @param {String} config.password - User's password.
-    * @param {String} config.url - API URL.
-    * @param {String} config.authToken - Authentication token.
-    * @param {String} config.clientId - Client ID.
+    * @param {String} config.appToken - Dippi Application token.
+    * @param {String} config.appId - Dippi Application ID.
+    * @param {String} config.url - Dippi API URL.
     */
     constructor(config) {
         this.appToken = config.appToken;
@@ -40,8 +38,8 @@ class Dippi {
      * 
      * @param {String} newAuthToken - New authentication token.
      */
-    async setAuthToken (newAuthToken) {
-        this.authToken = newAuthToken
+    setAuthToken(newAuthToken) {
+        this.authToken = newAuthToken;
     }
 
 }
@@ -54,11 +52,9 @@ class TBA {
     * Initializes a new instance of the TBA class.
     * 
     * @param {Object} config - Configuration object.
-    * @param {String} config.appToken - DippiClient authentication token.
-    * @param {String} config.appId - DippiClient application ID.
-    * @param {String} config.url - DippiClient API URL.
-    * @param {Object} config.auth - DippiClient authentication object.
-    * @param {Object} config._tokenBoundAccount - DippiClient Token Bound Account configuration.
+    * @param {String} config.appToken - Dippi authentication token.
+    * @param {String} config.appId - Dippi application ID.
+    * @param {String} config.url - Dippi API URL.
     */
     constructor(config) {
         this.appToken = config.appToken;
