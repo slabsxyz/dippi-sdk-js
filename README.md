@@ -10,7 +10,7 @@ npm i @dippixyz/sdk
 
 ## Usage
 
-Go to client.dippi.xyz to sign up and obtain an `appToken` and `appId`.
+Go to [client.dippi.xyz](https://client.dippi.xyz) to sign up and obtain an `appToken` and `appId`.
 
 ### Dippi Client
 
@@ -141,7 +141,7 @@ Make sure to replace the placeholders in the code with your actual data. Save th
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/dippixyz/dippi-sdk-js/blob/develop/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
 
