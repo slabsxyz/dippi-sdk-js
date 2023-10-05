@@ -93,8 +93,8 @@ const dippiClient = new Dippi({
     url: 'https://api.dippi.xyz',
 });
 
-// Authenticate
 (async () => {
+    // Authenticate
     const { accessToken } = await dippiClient.auth.login();
     dippiClient.setAuthToken(accessToken);
 
