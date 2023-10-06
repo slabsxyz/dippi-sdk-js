@@ -22,8 +22,8 @@ To use the Dippi Client, follow the steps below:
     const { Dippi, TBA } = require('@dippixyz/sdk');
 
     const dippiClient = new Dippi({
-        appToken: 'yourAppToken',
-        appId: 'yourAppId',
+        appToken: [appToken],
+        appId: [appId],
         url: 'https://api.dippi.xyz',
     });
     ```
@@ -57,8 +57,8 @@ To utilize the Token Bound Account (TBA) Class:
 
     ```js
     const tbaConfig = {
-        appToken: 'yourAppToken',
-        appId: 'yourAppId',
+        appToken: [appToken],
+        appId: [appId],
         url: 'https://api.dippi.xyz',
         auth: dippiClient.auth // Passing the auth instance from Dippi client
     };
