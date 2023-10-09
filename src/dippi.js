@@ -98,6 +98,7 @@ class TBA {
 
 
     /**
+     * @deprecated Use {@link createAccount} instead.
      * Creates a TokenBoundAccount.
      * a token-bound account is created for the NFT with the provided NFT token ID.
      * 
@@ -105,6 +106,15 @@ class TBA {
      */ 
     async create() {
         return this._tokenBoundAccount.create();
+    }
+
+    /**
+     * Computes Token Bound Account address.
+     * 
+     * @returns {Promise<string>} - The result of the computed address.
+     */
+    async computeTBAAddress() {
+        return this._tokenBoundAccount.getTBAComputedAddress();
     }
 
     /**
@@ -121,7 +131,7 @@ class TBA {
      * 
      * @returns {Promise<string>} - The signed transaction.
      */
-    async signCreateTransaction() {
+    async signCreateAccountTransaction() {
         return this._tokenBoundAccount.signCreateAccountTransaction();
     }
 
@@ -130,8 +140,8 @@ class TBA {
      * 
      * @returns {Promise<string>} - The result of the transaction.
      */
-    async sendCreateTransaction() {
-        return this._tokenBoundAccount.sendCreateAccountTransaction();
+    async createAccount() {
+        return this._tokenBoundAccount.createAccount();
     }
 }
 

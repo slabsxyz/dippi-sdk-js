@@ -99,8 +99,8 @@ class TokenBoundAccount {
         }
     }
 
-
     /**
+     * @deprecated This method will be removed in future versions. Use {@link createAccount} instead.
      * Creates a token bound account. There are two scenarios covered:
      * 1. If NFT contract, destination wallet, and NFT ID are provided, it creates a token bound account for the specified NFT.
      * 2. If only destination wallet is provided, it drops an NFT and then creates a token bound account.
@@ -133,7 +133,7 @@ class TokenBoundAccount {
                 
                 return await response.json();
             } catch (error) {
-                console.log('error---->',error)
+                throw error;
             }
             
         } else if (data.destinationWallet) {
@@ -157,6 +157,62 @@ class TokenBoundAccount {
             return `Missing parameters: {nftContract: ${this.nftContract}, destinationWallet: ${this.destinationWallet}, nftId: ${this.nftId}`;
         }
         
+    }
+
+    /**
+     * Sends a request to retrieve Token Bound Account (TBA) computed address.
+     * 
+     * TBAClient.init() takes care of initializing these parameters, they're here
+     * to provide a description of the data needed to compute a TBA address.
+     * @param {Object} data - The parameters required to compute a TBA address.
+     * @param {string} data.privateKey - Wallet Private Key.
+     * @param {string} data.implementation - The address of the implementation contract.
+     * @param {number} data.chainId - The ID of the blockchain network.
+     * @param {string} data.tokenContract - The address of the token contract.
+     * @param {number} data.tokenId - The ID of the token.
+     * @returns {Promise<string>} The signed transaction as a string.
+     * @throws {Error} Throws an error if there's an issue with the fetch request or missing parameters.
+     */
+    async getTBAComputedAddress() {
+        let data = {
+            privateKey: this.privateKey,
+            implementation: this.destinationWallet,
+            chainId: this.chainId,
+            tokenContract: this.nftContract,
+            tokenId: this.nftId,
+            gasLimit: "",
+            maxFeePerGas: "",
+        };
+
+        const requiredFields = ['privateKey', 'implementation', 'chainId', 'tokenContract', 'tokenId'];
+
+        for (let field of requiredFields) {
+            if (!data[field] && (field === 'tokenId' && data[field] == null)) {
+                throw new Error(`Missing required field: ${field} to compute TBA address`);
+            }
+        }
+
+        try {
+            const response = await fetch(
+                `${this.client.url}/v1/wallets/get-tba-computed-address`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${this.client.authToken}`
+                    },
+                    body: JSON.stringify(data), // Updated to include the specific fields in the payload
+                }
+            );
+            
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || 'Error computing TBA address');
+            }
+            return await response.text();
+        } catch (error) {
+            throw error;
+        }
     }
 
     /**
@@ -210,6 +266,64 @@ class TokenBoundAccount {
             if (!response.ok) {
                 const error = await response.json();
                 throw new Error(error.message || 'Error signing account creation transaction');
+            }
+            return await response.text();
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    /**
+     * Sends a Token Bound Account (TBA) creation transaction.
+     * 
+     * TBAClient.init() takes care of initializing these parameters, they're here
+     * to provide a description of the data needed to sign a transaction.
+     * @param {Object} data - The parameters required to sign a TBA creation transaction.
+     * @param {string} data.privateKey - Wallet Private Key.
+     * @param {string} data.implementation - The address of the implementation contract.
+     * @param {number} data.chainId - The ID of the blockchain network.
+     * @param {string} data.gasLimit - The maximum amount of gas that the transaction is allowed to use.
+     * @param {string} data.maxFeePerGas - The maximum fee per gas.
+     * @param {string} data.tokenContract - The address of the token contract.
+     * @param {number} data.tokenId - The ID of the token.
+     * @returns {Promise<string>} The signed transaction as a string.
+     * @throws {Error} Throws an error if there's an issue with the fetch request or missing parameters.
+     */
+    async sendCreateAccountTransaction() {
+        let data = {
+            privateKey: this.privateKey,
+            implementation: this.destinationWallet,
+            chainId: this.chainId,
+            gasLimit: this.gasLimit,
+            maxFeePerGas: this.gasLimit,
+            tokenContract: this.nftContract,
+            tokenId: this.nftId,
+        };
+
+        const requiredFields = ['privateKey', 'implementation', 'chainId', 'gasLimit', 'maxFeePerGas', 'tokenContract', 'tokenId'];
+
+        for (let field of requiredFields) {
+            if (!data[field]) {
+                throw new Error(`Missing required field: ${field} to send create account transaction`);
+            }
+        }
+
+        try {
+            const response = await fetch(
+                `${this.client.url}/v1/wallets/send-tba-account-creation`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${this.client.authToken}`
+                    },
+                    body: JSON.stringify(data), // Updated to include the specific fields in the payload
+                }
+            ); 
+            
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.message || 'Error sending account creation transaction');
             }
             return await response.text();
         } catch (error) {

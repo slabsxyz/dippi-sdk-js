@@ -16,5 +16,6 @@
     "prettier": "^2.8.2",
     "prettier-plugin-jsdoc": "^0.4.2",
     "size-limit": "^8.1.0"
-  }
+  },
+  "types": "types/types.d.ts"
 }

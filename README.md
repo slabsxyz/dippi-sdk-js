@@ -126,12 +126,13 @@ const dippiClient = new Dippi({
     // Initialize and Create TBA
     const initArgs = {
         destinationWallet: 'destinationWalletAddress',
+        chainId: 'chain id',
         nftContract: 'nftContractAddress',
         nftId: 'nftId'
     };
 
     await tba.init(initArgs);
-    await tba.create();
+    await tba.createAccount();
 
     console.log('TBA created successfully!');
 })();
@@ -147,7 +148,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-## Acknowledgments
+## Acknowledgements
 
 * Hat tip to anyone whose code was used
 * Inspiration
