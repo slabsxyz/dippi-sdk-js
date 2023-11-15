@@ -22,7 +22,7 @@ declare module '@dippixyz/sdk' {
     nftId: string;
   }
 
-  interface TBA {
+  class TBA {
     init(args: InitArgs): Promise<any>;
     create(): Promise<any>;
     estimateGas(): Promise<string>;
