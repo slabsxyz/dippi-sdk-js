@@ -31,7 +31,7 @@ declare module '@dippixyz/sdk' {
     setAuthToken(newAuthToken: string): Promise<void>;
   }
 
-  export class Dippi {
+  class Dippi {
     constructor(config: DippiOptions);
     setAuthToken(newAuthToken: string): void;
     auth: any;
