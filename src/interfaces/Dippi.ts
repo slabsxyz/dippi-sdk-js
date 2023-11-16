@@ -170,3 +170,12 @@ export interface DippiInstance {
     application: Application;
     applicationToken: ApplicationToken;
 }
+
+export interface InitArgs {
+    privateKey: string;
+    destinationWallet: string;
+    chainId: string;
+    gasLimit?: string;
+    nftContract: string;
+    nftId: string;
+}
