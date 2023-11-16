@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 interface Client {
     url: string;
     authToken: string;
@@ -92,11 +90,17 @@ class TokenBoundAccount {
         if (!this.privateKey) {
             throw new Error('Private key is missing');
         }
-        if (!this.privateKey) {
-            throw new Error('Private key is missing');
+        if (!this.destinationWallet) {
+            throw new Error('Destination wallet is missing');
         }
-        if (!this.privateKey) {
-            throw new Error('Private key is missing');
+        if (!this.chainId) {
+            throw new Error('Chain ID is missing');
+        }
+        if (!this.nftContract) {
+            throw new Error('NFT contract is missing');
+        }
+        if (!this.nftId) {
+            throw new Error('NFT ID is missing');
         }
         let data: EstimateGasData = {
             privateKey: this.privateKey,
@@ -163,6 +167,21 @@ class TokenBoundAccount {
     async createAccount(): Promise<string> {
         if (!this.privateKey) {
             throw new Error('Private key is missing');
+        }
+        if (!this.destinationWallet) {
+            throw new Error('Destination wallet is missing');
+        }
+        if (!this.chainId) {
+            throw new Error('Chain ID is missing');
+        }
+        if (!this.gasLimit) {
+            throw new Error('Gas limit is missing');
+        }
+        if (!this.nftContract) {
+            throw new Error('NFT contract is missing');
+        }
+        if (!this.nftId) {
+            throw new Error('NFT ID is missing');
         }
         let data: EstimateGasData = {
             privateKey: this.privateKey,
