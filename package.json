@@ -17,5 +17,8 @@
     "prettier-plugin-jsdoc": "^0.4.2",
     "size-limit": "^8.1.0"
   },
+  "scripts": {
+    "build": "tsc"
+  },
   "types": "types/types.d.ts"
 }
