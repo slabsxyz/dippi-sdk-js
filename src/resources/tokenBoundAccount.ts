@@ -92,6 +92,12 @@ class TokenBoundAccount {
         if (!this.privateKey) {
             throw new Error('Private key is missing');
         }
+        if (!this.privateKey) {
+            throw new Error('Private key is missing');
+        }
+        if (!this.privateKey) {
+            throw new Error('Private key is missing');
+        }
         let data: EstimateGasData = {
             privateKey: this.privateKey,
             implementation: this.destinationWallet,
