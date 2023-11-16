@@ -18,7 +18,8 @@
     "size-limit": "^8.1.0"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
   },
   "types": "types/types.d.ts"
 }
