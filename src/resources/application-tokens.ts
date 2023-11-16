@@ -4,7 +4,7 @@ import { Client, ApplicationResponseBody } from '../interfaces/Dippi';
  * Represents a class for handling operations related to Application Tokens.
  */
 class ApplicationToken {
-    private client: Client;
+    public client: Client;
     /**
      * Initializes the ApplicationToken class with a given client configuration.
      * 
