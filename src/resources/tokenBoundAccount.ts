@@ -36,7 +36,7 @@ class TokenBoundAccount {
     maxFeePerGas: string | null;
     chainId: string | null;
     privateKey: string | null;
-    [key: string]: string | null | Client | (() => Promise<string>) | (() => Promise<any>) | (() => Promise<void>) | (() => Promise<void>);
+    [key: string]: string | null | Client | ((data?: any) => Promise<string>) | ((data?: any) => Promise<any>) | ((data?: any) => Promise<void>) | ((data?: any) => Promise<void>);
 
     /**
      * Initializes the TokenBoundAccount with a given client.
