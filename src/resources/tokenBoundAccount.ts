@@ -20,6 +20,7 @@ interface EstimateGasData {
     tokenId: string;
     gasLimit: string;
     maxFeePerGas: string;
+    [key: string]: string;
 }
 
 /**
