@@ -10,6 +10,7 @@ interface InitData {
     gasLimit: string;
     nftContract: string;
     nftId: string;
+    [key: string]: string;
 }
 
 interface EstimateGasData {
