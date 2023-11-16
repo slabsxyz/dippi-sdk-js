@@ -175,7 +175,7 @@ export interface InitArgs {
     privateKey: string;
     destinationWallet: string;
     chainId: string;
-    gasLimit?: string;
+    gasLimit: string;
     nftContract: string;
     nftId: string;
 }
