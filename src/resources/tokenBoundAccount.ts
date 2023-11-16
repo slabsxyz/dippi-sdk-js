@@ -89,6 +89,9 @@ class TokenBoundAccount {
      * @throws {Error} Throws an error if there's an issue with the fetch request or missing parameters.
      */
     async estimateGas(): Promise<string> {
+        if (!this.privateKey) {
+            throw new Error('Private key is missing');
+        }
         let data: EstimateGasData = {
             privateKey: this.privateKey,
             implementation: this.destinationWallet,
@@ -152,6 +155,9 @@ class TokenBoundAccount {
      * @throws {Error} Throws an error if there's an issue with the fetch request or missing parameters.
      */
     async createAccount(): Promise<string> {
+        if (!this.privateKey) {
+            throw new Error('Private key is missing');
+        }
         let data: EstimateGasData = {
             privateKey: this.privateKey,
             implementation: this.destinationWallet,
