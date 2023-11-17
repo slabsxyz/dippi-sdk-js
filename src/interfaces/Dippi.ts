@@ -1,4 +1,3 @@
-
 export interface ClientAuth {
     url: string;
     appToken: string;
@@ -48,7 +47,7 @@ export interface Client {
 }
 
 export interface User {
-    client: Client; // Replace 'any' with the actual type of 'client' 
+    client: Client; // Replace 'any' with the actual type of 'client'
     getProfile(id: string): Promise<UserResponseBody>; // Replace 'any' with the actual return type of 'getProfile'
     updateProfile(data: any): Promise<UserResponseBody>; // Replace 'any' with the actual types of 'data' and the return type of 'updateProfile'
 }
@@ -85,7 +84,7 @@ export interface WalletRecoveryResponseBody {
 }
 
 // interface OwnedNft {
-    
+
 // }
 
 interface NFTResponseBody {
@@ -97,8 +96,14 @@ export interface Wallet {
     client: Client;
     list(): Promise<WalletResponseBody[]>;
     retrieve(id: string): Promise<WalletResponseBody>;
-    update(id: string, data: WalletUpdatePayload): Promise<WalletUpdateResponseBody>;
-    recovery(id: string, data: WalletRecoveryPayload): Promise<WalletRecoveryResponseBody>;
+    update(
+        id: string,
+        data: WalletUpdatePayload,
+    ): Promise<WalletUpdateResponseBody>;
+    recovery(
+        id: string,
+        data: WalletRecoveryPayload,
+    ): Promise<WalletRecoveryResponseBody>;
     balance(id: string): Promise<any>;
     nfts(id: string): Promise<any>;
     getWalletInfo(id: string, network: string): Promise<any>;
@@ -136,7 +141,10 @@ export interface Application {
     list(): Promise<ApplicationResponseBody[]>;
     create(data: ApplicationCreatePayload): Promise<ApplicationResponseBody>;
     retrieve(id: string | number): Promise<ApplicationResponseBody>;
-    update(id: string | number, data: ApplicationUpdatePayload): Promise<ApplicationResponseBody>;
+    update(
+        id: string | number,
+        data: ApplicationUpdatePayload,
+    ): Promise<ApplicationResponseBody>;
 }
 
 interface ApplicationTokenResponseBody {
