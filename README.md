@@ -46,7 +46,9 @@ To use the Dippi Client, follow the steps below:
     ```js
     const userWallets = await dippiClient.wallet.list();
     const userApplications = await dippiClient.application.list();
-    const userApplicationToken = await dippiClient.applicationToken.retrieve(applicationId);
+    const userApplicationToken = await dippiClient.applicationToken.retrieve(
+        applicationId,
+    );
     ```
 
 ### Token Bound Account (TBA)
@@ -60,7 +62,7 @@ To utilize the Token Bound Account (TBA) Class:
         appToken: [appToken],
         appId: [appId],
         url: 'https://api.dippi.xyz',
-        auth: dippiClient.auth // Passing the auth instance from Dippi client
+        auth: dippiClient.auth, // Passing the auth instance from Dippi client
     };
 
     const tba = new TBA(tbaConfig);
@@ -72,7 +74,7 @@ To utilize the Token Bound Account (TBA) Class:
     const initArgs = {
         destinationWallet: 'destinationWalletAddress',
         nftContract: 'nftContractAddress',
-        nftId: 'nftId'
+        nftId: 'nftId',
     };
 
     await tba.init(initArgs);
@@ -110,7 +112,9 @@ const dippiClient = new Dippi({
 
     // Retrieve User Application Token
     const tokenId = 'yourTokenId';
-    const userApplicationToken = await dippiClient.applicationToken.retrieve(tokenId);
+    const userApplicationToken = await dippiClient.applicationToken.retrieve(
+        tokenId,
+    );
 
     // Initialize TBA
     const tbaConfig = {
@@ -118,7 +122,7 @@ const dippiClient = new Dippi({
         appId: 'yourAppId',
         url: 'https://api.dippi.xyz',
         auth: dippiClient.auth,
-        _tokenBoundAccount: {}
+        _tokenBoundAccount: {},
     };
 
     const tba = new TBA(tbaConfig);
@@ -128,7 +132,7 @@ const dippiClient = new Dippi({
         destinationWallet: 'destinationWalletAddress',
         chainId: 'chain id',
         nftContract: 'nftContractAddress',
-        nftId: 'nftId'
+        nftId: 'nftId',
     };
 
     await tba.init(initArgs);
@@ -150,7 +154,10 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgements
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+-   Hat tip to anyone whose code was used
+-   Inspiration
+-   etc
+
+```
+
 ```
