@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "baseUrl": "./",
+        "paths": {
+            "*": ["src/*"], // All modules are searched relative to the src directory
+            "interfaces/*": ["src/interfaces/*"]
+        }, // The interfaces directory is mapped to src/interfaces
+        "target": "es6",
+        "module": "commonjs",
+        "strict": true,
+        "esModuleInterop": true,
+        "outDir": "dist",
+        "types": ["jest"],
+        "moduleResolution": "node"
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
+}
