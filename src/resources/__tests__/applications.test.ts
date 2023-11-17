@@ -3,7 +3,7 @@ import {
     ApplicationResponseBody,
     ApplicationCreatePayload,
     ApplicationUpdatePayload,
-} from '../../interfaces/Dippi';
+} from 'interfaces/Dippi';
 import Application from '../applications';
 
 describe('Application', () => {
