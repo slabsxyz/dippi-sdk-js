@@ -3,8 +3,8 @@
         "baseUrl": "./",
         "paths": {
             "*": ["src/*"], // All modules are searched relative to the src directory
-            "interfaces/*": ["src/interfaces/*"]
-        }, // The interfaces directory is mapped to src/interfaces
+            "interfaces/*": ["src/types/interfaces/*"]
+        }, // The interfaces directory is mapped to src/types/interfaces
         "target": "es6",
         "module": "commonjs",
         "strict": true,
