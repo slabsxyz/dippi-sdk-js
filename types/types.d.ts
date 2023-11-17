@@ -1,26 +1,14 @@
 declare module '@dippixyz/sdk' {
-    export interface DippiOptions {
-        appToken: string;
-        appId: string;
-        url: string;
-        authToken?: string;
-        urlReturn?: string;
-    }
-
-    export interface TBAOptions {
-        appToken: string;
-        appId: string;
-        url: string;
-        authToken?: string;
-    }
-
-    export interface InitArgs {
-        destinationWallet: string;
-        chainId: string;
-        gasLimit?: string;
-        nftContract: string;
-        nftId: string;
-    }
+    import {
+        User as UserInterface,
+        Auth as AuthInterface,
+        Wallet as WalletInterface,
+        Application as ApplicationInterface,
+        ApplicationToken as ApplicationTokenInterface,
+        DippiConfig,
+        InitArgs,
+    } from './interfaces/Dippi';
+    import { TokenBoundAccountInterface } from './interfaces/TokenBoundAccountInterface';
 
     class TBA {
         auth: Auth;
@@ -33,7 +21,7 @@ declare module '@dippixyz/sdk' {
     }
 
     class Dippi {
-        constructor(config: DippiOptions);
+        constructor(config: DippiConfig);
         setAuthToken(newAuthToken: string): void;
         auth: AuthInterface;
         user: UserInterface;
