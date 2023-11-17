@@ -12,6 +12,30 @@ npm i @dippixyz/sdk
 
 Go to [client.dippi.xyz](https://client.dippi.xyz) to sign up and obtain an `appToken` and `appId`.
 
+## Class Definitions
+
+### Dippi
+
+- `appToken: string;`
+- `appId: string;`
+- `url: string;`
+- `authToken: string;`
+- `urlReturn: string;`
+- `auth: AuthInterface;`
+- `user: UserInterface;`
+- `wallet: WalletInterface;`
+- `application: ApplicationInterface;`
+- `applicationToken: ApplicationTokenInterface;`
+
+### TBA
+
+- `appToken: string;`
+- `appId: string;`
+- `url: string;`
+- `authToken: string;`
+- `auth: Auth;`
+- `_tokenBoundAccount: TokenBoundAccountInterface;`
+
 ### Dippi Client
 
 To use the Dippi Client, follow the steps below:
