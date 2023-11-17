@@ -2,6 +2,7 @@ export interface ClientAuth {
     url: string;
     appToken: string;
     appId: string;
+    authToken: string;
     urlReturn?: string;
 }
 
