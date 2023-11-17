@@ -5,7 +5,7 @@ This is the Dippi SDK for JavaScript, providing a wrapper around the Dippi API.
 ## Installation
 
 ```bash
-npm i @dippixyz/sdk
+npm i @dippixyz/base-sdk
 ```
 
 ## Usage
@@ -43,7 +43,7 @@ To use the Dippi Client, follow the steps below:
 1. **Initialization**:
 
     ```js
-    const { Dippi, TBA } = require('@dippixyz/sdk');
+    const { Dippi, TBA } = require('@dippixyz/base-sdk');
 
     const dippiClient = new Dippi({
         appToken: [appToken],
@@ -110,7 +110,7 @@ To utilize the Token Bound Account (TBA) Class:
 Below is an example of how you can utilize the Dippi SDK and the TBA feature in a simple Node.js application.
 
 ```js
-const { Dippi, TBA } = require('@dippixyz/sdk');
+const { Dippi, TBA } = require('@dippixyz/base-sdk');
 
 // Initialize Dippi Client
 const dippiClient = new Dippi({
