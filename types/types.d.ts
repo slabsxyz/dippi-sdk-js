@@ -23,22 +23,23 @@ declare module '@dippixyz/sdk' {
     }
 
     class TBA {
+        auth: Auth;
+        _tokenBoundAccount: TokenBoundAccountInterface;
         init(args: InitArgs): Promise<any>;
         create(): Promise<any>;
         estimateGas(): Promise<string>;
-        signCreateTransaction(): Promise<string>;
-        sendCreateTransaction(): Promise<string>;
+        createAccount(): Promise<any>;
         setAuthToken(newAuthToken: string): Promise<void>;
     }
 
     class Dippi {
         constructor(config: DippiOptions);
         setAuthToken(newAuthToken: string): void;
-        auth: any;
-        user: any;
-        wallet: any;
-        application: any;
-        applicationToken: any;
+        auth: AuthInterface;
+        user: UserInterface;
+        wallet: WalletInterface;
+        application: ApplicationInterface;
+        applicationToken: ApplicationTokenInterface;
     }
 
     export { Dippi, TBA };
