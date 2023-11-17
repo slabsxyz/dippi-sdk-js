@@ -1,13 +1,7 @@
-import { User } from './user';
-import { Auth } from './auth';
-import { Wallet } from './wallet';
-import { Application } from './application';
-import { ApplicationToken } from './application-token';
+import User from './user';
+import Auth from './auth';
+import Wallet from './wallets';
+import Application from './applications';
+import ApplicationToken from './application-tokens';
 
-export {
-    User,
-    Auth,
-    Wallet,
-    Application,
-    ApplicationToken,
-};
+export { User, Auth, Wallet, Application, ApplicationToken };

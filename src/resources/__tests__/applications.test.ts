@@ -1,5 +1,10 @@
-import { Client, ApplicationResponseBody, ApplicationCreatePayload, ApplicationUpdatePayload } from '../interfaces/Dippi';
-import Application from '../resources/applications';
+import {
+    Client,
+    ApplicationResponseBody,
+    ApplicationCreatePayload,
+    ApplicationUpdatePayload,
+} from '../../interfaces/Dippi';
+import Application from '../applications';
 
 describe('Application', () => {
     let client: Client;
@@ -8,7 +13,7 @@ describe('Application', () => {
     beforeEach(() => {
         client = {
             url: 'http://localhost:3000',
-            authToken: 'testToken'
+            authToken: 'testToken',
         };
         application = new Application(client);
     });

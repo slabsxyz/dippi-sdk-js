@@ -2,9 +2,9 @@
     "compilerOptions": {
         "baseUrl": "./",
         "paths": {
-            "*": ["src/*"], // All modules are searched relative to the src directory
-            "interfaces/*": ["src/types/interfaces/*"]
-        }, // The interfaces directory is mapped to src/types/interfaces
+            "*": ["src/*"],
+            "interfaces/*": ["src/interfaces/*"]
+        },
         "target": "es6",
         "module": "commonjs",
         "strict": true,

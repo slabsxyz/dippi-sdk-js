@@ -1,16 +1,42 @@
-import { Wallet } from '../wallets';
+import {
+    Wallet as WalletInterface,
+    WalletResponseBody,
+} from '../../interfaces/Dippi';
+import Wallet from '../wallets';
 
 describe('Wallet', () => {
-    let wallet: Wallet;
+    let wallet: WalletInterface;
+    let mockClient: any;
 
     beforeEach(() => {
-        // Initialize your Wallet instance here
-        // wallet = new Wallet(...);
+        mockClient = {
+            url: 'http://localhost:3000',
+            authToken: 'testToken',
+        };
+        wallet = new Wallet(mockClient);
     });
 
-    // Write your tests here
-    // Example:
-    // it('should do something', () => {
-    //     expect(wallet.someMethod()).toBe(someValue);
-    // });
+    it('should initialize with the correct client', () => {
+        expect(wallet.client).toBe(mockClient);
+    });
+
+    // Add more tests here for the other methods in the Wallet class
+    it('should return wallet info', () => {
+        let walletInfo: WalletResponseBody = {
+            // Replace with values and params that can be confirmed...
+            id: 'string',
+            name: 'string',
+            address: 'string',
+            fileId: 'string',
+            ownerId: 'string',
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        };
+        expect(wallet.getWalletInfo('testId', 'testNetwork')).toBe(walletInfo);
+    });
+
+    it('should return wallet info', () => {
+        let walletInfo: any;
+        expect(wallet.list()).toBe(walletInfo);
+    });
 });

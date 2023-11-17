@@ -25,6 +25,7 @@ describe('TBA', () => {
             appId: 'testId',
             url: 'testUrl',
             authToken: 'testAuthToken',
+            urlReturn: 'testUrlReturn',
         });
     });
 

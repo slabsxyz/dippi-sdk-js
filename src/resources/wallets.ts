@@ -1,4 +1,11 @@
-import { Client, WalletResponseBody, WalletUpdatePayload, WalletUpdateResponseBody, WalletRecoveryPayload, WalletRecoveryResponseBody } from '../types/types';
+import {
+    Client,
+    WalletResponseBody,
+    WalletUpdatePayload,
+    WalletUpdateResponseBody,
+    WalletRecoveryPayload,
+    WalletRecoveryResponseBody,
+} from '../interfaces/Dippi';
 
 class Wallet {
     client: Client;
@@ -14,57 +21,57 @@ class Wallet {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
+                    Authorization: `Bearer ${this.client.authToken}`,
                 },
-            }
-        )
+            },
+        );
 
         return await response.json();
     }
 
     async retrieve(id: string): Promise<WalletResponseBody> {
-        const response = await fetch(
-            `${this.client.url}/v1/wallets/${id}`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
-                },
-            }
-        )
+        const response = await fetch(`${this.client.url}/v1/wallets/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${this.client.authToken}`,
+            },
+        });
 
         return await response.json();
     }
 
-    async update(id: string, data: WalletUpdatePayload): Promise<WalletUpdateResponseBody> {
-        const response = await fetch(
-            `${this.client.url}/v1/wallets/${id}`,
-            {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
-                },
-                body: JSON.stringify(data),
-            }
-        )
+    async update(
+        id: string,
+        data: WalletUpdatePayload,
+    ): Promise<WalletUpdateResponseBody> {
+        const response = await fetch(`${this.client.url}/v1/wallets/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${this.client.authToken}`,
+            },
+            body: JSON.stringify(data),
+        });
 
         return await response.json();
     }
 
-    async recovery(id: string, data: WalletRecoveryPayload): Promise<WalletRecoveryResponseBody> {
+    async recovery(
+        id: string,
+        data: WalletRecoveryPayload,
+    ): Promise<WalletRecoveryResponseBody> {
         const response = await fetch(
             `${this.client.url}/v1/wallets/${id}/recovery`,
             {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
+                    Authorization: `Bearer ${this.client.authToken}`,
                 },
-                body: JSON.stringify(data)
-            }
-        )
+                body: JSON.stringify(data),
+            },
+        );
 
         return await response.json();
     }
@@ -76,10 +83,10 @@ class Wallet {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
+                    Authorization: `Bearer ${this.client.authToken}`,
                 },
-            }
-        )
+            },
+        );
 
         return await response.json();
     }
@@ -91,10 +98,10 @@ class Wallet {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
+                    Authorization: `Bearer ${this.client.authToken}`,
                 },
-            }
-        )
+            },
+        );
 
         return await response.json();
     }
@@ -106,10 +113,10 @@ class Wallet {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
+                    Authorization: `Bearer ${this.client.authToken}`,
                 },
-            }
-        )
+            },
+        );
 
         return await response.json();
     }

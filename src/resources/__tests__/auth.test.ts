@@ -1,7 +1,8 @@
 import Auth from '../auth';
+import { Auth as AuthInterface } from '../../interfaces/Dippi';
 
 describe('Auth', () => {
-    let auth: Auth;
+    let auth: AuthInterface;
 
     beforeEach(() => {
         // Initialize auth before each test

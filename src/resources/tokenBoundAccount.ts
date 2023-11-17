@@ -36,11 +36,18 @@ class TokenBoundAccount {
     maxFeePerGas: string | null;
     chainId: string | null;
     privateKey: string | null;
-    [key: string]: string | null | Client | ((data?: any) => Promise<string>) | ((data?: any) => Promise<any>) | ((data?: any) => Promise<void>) | ((data?: any) => Promise<void>);
+    [key: string]:
+        | string
+        | null
+        | Client
+        | ((data?: any) => Promise<string>)
+        | ((data?: any) => Promise<any>)
+        | ((data?: any) => Promise<void>)
+        | ((data?: any) => Promise<void>);
 
     /**
      * Initializes the TokenBoundAccount with a given client.
-     * 
+     *
      * @constructor
      * @param {Object} client - Contains configurations for DippiClient including authToken.
      */
@@ -57,7 +64,7 @@ class TokenBoundAccount {
 
     /**
      * Initializes the TokenBoundAccount properties with provided data.
-     * 
+     *
      * @param {Object} data - Contains properties for TokenBoundAccount.
      * @param {string} data.privateKey - Wallet private key (to instantiate contract and pay for gas fees).
      * @param {string} data.destinationWallet - Destination wallet address.
@@ -66,7 +73,7 @@ class TokenBoundAccount {
      * @param {string} data.nftContract - NFT drop contract address.
      * @param {string} data.nftId - NFT Token ID.
      */
-    async init (data: InitData) {
+    async init(data: InitData) {
         for (let key in data) {
             // If the instance (TokenBoundAccount) has this property, then set its value
             if (this.hasOwnProperty(key)) {
@@ -77,7 +84,7 @@ class TokenBoundAccount {
 
     /**
      * Fetches the estimated gas for a Token Bound Account (TBA) creation transaction.
-     * 
+     *
      * TBAClient.init() takes care of initializing these parameters, they're here
      * to provide a description of the data needed to estimate gas.
      * @param {Object} data - The parameters required to estimate gas for a TBA creation transaction.
@@ -111,17 +118,25 @@ class TokenBoundAccount {
             chainId: this.chainId,
             tokenContract: this.nftContract,
             tokenId: this.nftId,
-            gasLimit: "",
-            maxFeePerGas: "",
+            gasLimit: '',
+            maxFeePerGas: '',
         };
-        
-        const requiredFields = ['privateKey', 'implementation', 'chainId', 'tokenContract', 'tokenId'];
-        
+
+        const requiredFields = [
+            'privateKey',
+            'implementation',
+            'chainId',
+            'tokenContract',
+            'tokenId',
+        ];
+
         for (let field of requiredFields) {
             if (!data[field]) {
-                throw new Error(`Missing required field: ${field} to estimate gas for account creation.`);
+                throw new Error(
+                    `Missing required field: ${field} to estimate gas for account creation.`,
+                );
             }
-        }        
+        }
 
         try {
             const response = await fetch(
@@ -130,19 +145,19 @@ class TokenBoundAccount {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${this.client.authToken}`
+                        Authorization: `Bearer ${this.client.authToken}`,
                     },
                     body: JSON.stringify(data), // Updated to include the specific fields in the payload
-                }
+                },
             );
-            
+
             if (!response.ok) {
                 const error = await response.json();
                 throw new Error(error.message || 'Error estimating gas');
             }
             const textResponse = await response.text();
             const responseObj = JSON.parse(textResponse);
-            this.gasLimit = responseObj.hex ? responseObj.hex : "0";
+            this.gasLimit = responseObj.hex ? responseObj.hex : '0';
             return textResponse; // Assuming the response is a string representation of the estimated gas
         } catch (error) {
             throw error;
@@ -153,7 +168,7 @@ class TokenBoundAccount {
 
     /**
      * Sends a request to sign a Token Bound Account (TBA) creation transaction.
-     * 
+     *
      * TBAClient.init() takes care of initializing these parameters, they're here
      * to provide a description of the data needed to send a transaction.
      * @param {Object} data - The parameters required to sign a TBA creation transaction.
@@ -196,11 +211,21 @@ class TokenBoundAccount {
             tokenId: this.nftId,
         };
 
-        const requiredFields = ['privateKey', 'implementation', 'chainId', 'gasLimit', 'maxFeePerGas', 'tokenContract', 'tokenId'];
+        const requiredFields = [
+            'privateKey',
+            'implementation',
+            'chainId',
+            'gasLimit',
+            'maxFeePerGas',
+            'tokenContract',
+            'tokenId',
+        ];
 
         for (let field of requiredFields) {
             if (!data[field]) {
-                throw new Error(`Missing required field: ${field} to sign create account transaction`);
+                throw new Error(
+                    `Missing required field: ${field} to sign create account transaction`,
+                );
             }
         }
 
@@ -211,17 +236,17 @@ class TokenBoundAccount {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${this.client.authToken}`
+                        Authorization: `Bearer ${this.client.authToken}`,
                     },
                     body: JSON.stringify(data), // Updated to include the specific fields in the payload
-                }
+                },
             );
-            
+
             if (!response.ok) {
                 const error = await response.json();
                 throw new Error(error.message || 'Error creating tba');
             }
-            
+
             return await response.text();
         } catch (error) {
             throw error;

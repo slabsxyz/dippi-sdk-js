@@ -1,25 +1,28 @@
 {
-  "name": "@dippixyz/sdk",
-  "version": "1.0.4",
-  "description": "Dippi SDK",
-  "main": "src/dippi.js",
-  "repository": "https://github.com/dippixyz/dippi-sdk-js.git",
-  "author": "victor@dippi.xyz",
-  "license": "MIT",
-  "devDependencies": {
-    "eslint": "^8.31.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-unused-imports": "^2.0.0",
-    "husky": "^8.0.3",
-    "prettier": "^2.8.2",
-    "prettier-plugin-jsdoc": "^0.4.2",
-    "size-limit": "^8.1.0"
-  },
-  "scripts": {
-    "build": "tsc",
-    "test": "jest"
-  },
-  "types": "types/types.d.ts"
+    "name": "@dippixyz/base-sdk",
+    "version": "2.0.0",
+    "description": "Dippi SDK",
+    "main": "src/dippi.js",
+    "repository": "https://github.com/dippixyz/dippi-sdk-js.git",
+    "author": "victor@dippi.xyz",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/jest": "^29.5.8",
+        "eslint": "^8.31.0",
+        "eslint-config-prettier": "^8.6.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-unused-imports": "^2.0.0",
+        "husky": "^8.0.3",
+        "jest-fetch-mock": "^3.0.3",
+        "prettier": "^2.8.2",
+        "prettier-plugin-jsdoc": "^0.4.2",
+        "size-limit": "^8.1.0",
+        "typescript": "^5.2.2"
+    },
+    "scripts": {
+        "build": "tsc",
+        "test": "jest"
+    },
+    "types": "types/types.d.ts"
 }

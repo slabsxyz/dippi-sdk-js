@@ -1,4 +1,4 @@
-import { Client, UserResponseBody } from '../types/types';
+import { Client, UserResponseBody } from '../interfaces/Dippi';
 
 class User {
     client: Client;
@@ -7,33 +7,27 @@ class User {
         this.client = client;
     }
 
-    async getProfile(): Promise<UserResponseBody> {
-        const response = await fetch(
-            `${this.client.url}/v1/users/${id}`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
-                },
-            }
-        )
+    async getProfile(id: string): Promise<UserResponseBody> {
+        const response = await fetch(`${this.client.url}/v1/users/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${this.client.authToken}`,
+            },
+        });
 
         return await response.json();
     }
 
     async updateProfile(data: any): Promise<UserResponseBody> {
-        const response = await fetch(
-            `${this.client.url}/v1/me`,
-            {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${this.client.authToken}`
-                },
-                body: JSON.stringify(data),
-            }
-        )
+        const response = await fetch(`${this.client.url}/v1/me`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${this.client.authToken}`,
+            },
+            body: JSON.stringify(data),
+        });
 
         return await response.json();
     }
