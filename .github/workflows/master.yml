@@ -1,28 +1,22 @@
-name: CI Dippi/SDK
-
+name: Publish Dippi-SDK-JS Package to npmjs
 on:
-  push:
-    branches:
-      - master
-
+    push:
+        branches:
+            - main
+    release:
+        types: [published]
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 18
-
-      - name: Install npm dependecies
-        run: npm install
-      
-      
-      
-
-
-
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            # Setup .npmrc file to publish to npm
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: "20.x"
+                  registry-url: "https://registry.npmjs.org"
+            - run: npm ci
+            - run: npm run build
+            - run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

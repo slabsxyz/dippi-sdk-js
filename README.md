@@ -5,12 +5,36 @@ This is the Dippi SDK for JavaScript, providing a wrapper around the Dippi API.
 ## Installation
 
 ```bash
-npm i @dippixyz/sdk
+npm i @dippixyz/base-sdk
 ```
 
 ## Usage
 
 Go to [client.dippi.xyz](https://client.dippi.xyz) to sign up and obtain an `appToken` and `appId`.
+
+## Class Definitions
+
+### Dippi
+
+-   `appToken: string;`
+-   `appId: string;`
+-   `url: string;`
+-   `authToken: string;`
+-   `urlReturn: string;`
+-   `auth: AuthInterface;`
+-   `user: UserInterface;`
+-   `wallet: WalletInterface;`
+-   `application: ApplicationInterface;`
+-   `applicationToken: ApplicationTokenInterface;`
+
+### TBA
+
+-   `appToken: string;`
+-   `appId: string;`
+-   `url: string;`
+-   `authToken: string;`
+-   `auth: Auth;`
+-   `_tokenBoundAccount: TokenBoundAccountInterface;`
 
 ### Dippi Client
 
@@ -19,7 +43,7 @@ To use the Dippi Client, follow the steps below:
 1. **Initialization**:
 
     ```js
-    const { Dippi, TBA } = require('@dippixyz/sdk');
+    const { Dippi, TBA } = require('@dippixyz/base-sdk');
 
     const dippiClient = new Dippi({
         appToken: [appToken],
@@ -46,7 +70,9 @@ To use the Dippi Client, follow the steps below:
     ```js
     const userWallets = await dippiClient.wallet.list();
     const userApplications = await dippiClient.application.list();
-    const userApplicationToken = await dippiClient.applicationToken.retrieve(applicationId);
+    const userApplicationToken = await dippiClient.applicationToken.retrieve(
+        applicationId,
+    );
     ```
 
 ### Token Bound Account (TBA)
@@ -60,7 +86,7 @@ To utilize the Token Bound Account (TBA) Class:
         appToken: [appToken],
         appId: [appId],
         url: 'https://api.dippi.xyz',
-        auth: dippiClient.auth // Passing the auth instance from Dippi client
+        auth: dippiClient.auth, // Passing the auth instance from Dippi client
     };
 
     const tba = new TBA(tbaConfig);
@@ -72,7 +98,7 @@ To utilize the Token Bound Account (TBA) Class:
     const initArgs = {
         destinationWallet: 'destinationWalletAddress',
         nftContract: 'nftContractAddress',
-        nftId: 'nftId'
+        nftId: 'nftId',
     };
 
     await tba.init(initArgs);
@@ -84,7 +110,7 @@ To utilize the Token Bound Account (TBA) Class:
 Below is an example of how you can utilize the Dippi SDK and the TBA feature in a simple Node.js application.
 
 ```js
-const { Dippi, TBA } = require('@dippixyz/sdk');
+const { Dippi, TBA } = require('@dippixyz/base-sdk');
 
 // Initialize Dippi Client
 const dippiClient = new Dippi({
@@ -110,7 +136,9 @@ const dippiClient = new Dippi({
 
     // Retrieve User Application Token
     const tokenId = 'yourTokenId';
-    const userApplicationToken = await dippiClient.applicationToken.retrieve(tokenId);
+    const userApplicationToken = await dippiClient.applicationToken.retrieve(
+        tokenId,
+    );
 
     // Initialize TBA
     const tbaConfig = {
@@ -118,7 +146,7 @@ const dippiClient = new Dippi({
         appId: 'yourAppId',
         url: 'https://api.dippi.xyz',
         auth: dippiClient.auth,
-        _tokenBoundAccount: {}
+        _tokenBoundAccount: {},
     };
 
     const tba = new TBA(tbaConfig);
@@ -126,12 +154,13 @@ const dippiClient = new Dippi({
     // Initialize and Create TBA
     const initArgs = {
         destinationWallet: 'destinationWalletAddress',
+        chainId: 'chain id',
         nftContract: 'nftContractAddress',
-        nftId: 'nftId'
+        nftId: 'nftId',
     };
 
     await tba.init(initArgs);
-    await tba.create();
+    await tba.createAccount();
 
     console.log('TBA created successfully!');
 })();
@@ -147,9 +176,12 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-## Acknowledgments
+## Acknowledgements
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+-   Hat tip to anyone whose code was used
+-   Inspiration
+-   etc
+
+```
+
 ```
