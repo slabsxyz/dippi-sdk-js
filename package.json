@@ -1,6 +1,6 @@
 {
     "name": "@dippixyz/base-sdk",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Dippi SDK",
     "main": "src/dippi.js",
     "repository": "https://github.com/dippixyz/dippi-sdk-js.git",
