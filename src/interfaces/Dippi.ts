@@ -48,9 +48,9 @@ export interface Client {
 }
 
 export interface User {
-    client: Client; // Replace 'any' with the actual type of 'client'
-    getProfile(id: string): Promise<UserResponseBody>; // Replace 'any' with the actual return type of 'getProfile'
-    updateProfile(data: any): Promise<UserResponseBody>; // Replace 'any' with the actual types of 'data' and the return type of 'updateProfile'
+    client: Client;
+    getProfile(id: string): Promise<UserResponseBody>;
+    updateProfile(data: any): Promise<UserResponseBody>; // TODO: Replace 'any' with the actual types of 'data'.
 }
 
 export interface WalletResponseBody {
@@ -84,10 +84,7 @@ export interface WalletRecoveryResponseBody {
     privateKey: string;
 }
 
-// interface OwnedNft {
-
-// }
-
+// TODO: Check warning about not being used. Remove it if not necessary
 interface NFTResponseBody {
     ownedNfts: any;
     totalCount: number;
@@ -148,6 +145,7 @@ export interface Application {
     ): Promise<ApplicationResponseBody>;
 }
 
+// TODO: Check warning about not being used. Remove it if not necessary
 interface ApplicationTokenResponseBody {
     id: string;
     applicationId: string;
