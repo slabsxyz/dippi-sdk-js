@@ -23,6 +23,5 @@
     "scripts": {
         "build": "tsc",
         "test": "jest"
-    },
-    "types": "types/types.d.ts"
+    }
 }
