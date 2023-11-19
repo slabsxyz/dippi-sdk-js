@@ -2,11 +2,7 @@ name: Publish Dippi-SDK-JS Package to npmjs
 on:
     push:
         branches:
-            - main
-    pull_request:
-        branches:
-            - main
-        types: [closed]
+            - master
     release:
         types: [published]
 jobs:
