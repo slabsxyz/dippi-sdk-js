@@ -34,8 +34,8 @@ class Dippi implements DippiInstance {
         this.appToken = config.appToken;
         this.appId = config.appId;
         this.url = config.url;
-        this.authToken = config.authToken;
-        this.urlReturn = config.urlReturn;
+        this.authToken = config.authToken? config.authToken : '';
+        this.urlReturn = config.urlReturn? config.urlReturn : '';
 
         this.auth = new Auth(this);
         this.user = new User(this);
@@ -60,8 +60,8 @@ class TBA {
     constructor(config: DippiConfig) {
         this.appToken = config.appToken;
         this.appId = config.appId;
-        this.url = config.url;
-        this.authToken = config.authToken;
+        this.url = config.url? config.url : '';
+        this.authToken = config.authToken? config.authToken : '';
 
         this.auth = new Auth(this);
         this._tokenBoundAccount = new TokenBoundAccount(this);
