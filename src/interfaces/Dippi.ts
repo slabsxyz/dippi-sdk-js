@@ -15,6 +15,31 @@ export interface GetUrlResponse {
     url: string;
 }
 
+export interface SignInPayload {
+    email: string;
+    password: string;
+    token: string;
+    applicationId: string;
+    countryCode: string;
+}
+
+export interface ResetPasswordPayload {
+    email: string;
+}
+
+export interface SigninResponseBody {
+    accessToken: string;
+    refreshToken: string;
+}
+
+export interface UserCreatePayload {
+    email: string;
+    applicationId: string;
+    password: string;
+    authType: string;
+    phone: string;
+}
+
 export interface UserResponseBody {
     id: string;
     password: string;
@@ -51,6 +76,47 @@ export interface User {
     client: Client;
     getProfile(id: string): Promise<UserResponseBody>;
     updateProfile(data: any): Promise<UserResponseBody>; // TODO: Replace 'any' with the actual types of 'data'.
+    createProfile(data: UserCreatePayload): Promise<UserResponseBody>;
+    authenticate(data: SignInPayload): Promise<SigninResponseBody>;
+    resetPassword(data: ResetPasswordPayload): Promise<any>;
+}
+
+export interface WalletCreatePayload {
+    ownerId: string;
+    walletType: string;
+    isTestNet: boolean;
+    storeOption: string; // email
+    userCode: string;
+    name: string;
+    fromMnemonic: boolean;
+    mnemonicPhrase: string;
+    fromPrivateKey: boolean;
+    privateKey: string;
+    useRecoveryPhrase: boolean;
+    recoveryPhrase: string;
+    repeatedRecoveryPhrase: string;
+    useKeyppiProtocol: boolean;
+    useKeyppiTransactionInfluenciableWallets: boolean;
+    transactionInfluenciableWallets: string;
+    acceptTermsAndConditions: boolean;
+    environment: string;
+}
+
+export interface WalletGetNFTsPayload {
+    address: string;
+    chainId: number;
+}
+
+export interface OwnedNftsResponse {
+    /** The NFTs owned by the provided address. */
+    readonly ownedNfts: any[];
+    /**
+     * Pagination token that can be passed into another request to fetch the next
+     * NFTs. If there is no page key, then there are no more NFTs to fetch.
+     */
+    readonly pageKey?: string;
+    /** The total count of NFTs owned by the provided address. */
+    readonly totalCount: number;
 }
 
 export interface WalletResponseBody {
@@ -92,6 +158,7 @@ interface NFTResponseBody {
 
 export interface Wallet {
     client: Client;
+    create(data: WalletCreatePayload): Promise<WalletResponseBody>;
     list(): Promise<WalletResponseBody[]>;
     retrieve(id: string): Promise<WalletResponseBody>;
     update(
@@ -102,7 +169,9 @@ export interface Wallet {
         id: string,
         data: WalletRecoveryPayload,
     ): Promise<WalletRecoveryResponseBody>;
+    getBalance(id: string): Promise<WalletResponseBody>;
     balance(id: string): Promise<any>;
+    getNFTs(data: WalletGetNFTsPayload): Promise<OwnedNftsResponse>;
     nfts(id: string): Promise<any>;
     getWalletInfo(id: string, network: string): Promise<any>;
 }
@@ -161,8 +230,8 @@ export interface DippiConfig {
     appToken: string;
     appId: string;
     url: string;
-    authToken: string;
-    urlReturn: string;
+    authToken?: string;
+    urlReturn?: string;
 }
 
 export interface DippiInstance {
