@@ -2,7 +2,11 @@
     "name": "@dippixyz/base-sdk",
     "version": "1.1.0",
     "description": "Dippi SDK",
-    "main": "src/dippi.js",
+    "main": "dist/index.js",
+    "files": [
+        "dist/"
+    ],
+    "types": "dist/dippi.d.ts",
     "repository": "https://github.com/dippixyz/dippi-sdk-js.git",
     "author": "victor@dippi.xyz",
     "license": "MIT",
@@ -25,6 +29,7 @@
     },
     "scripts": {
         "build": "tsc",
-        "test": "jest"
+        "test": "jest",
+        "prepublishOnly": "npm run build"
     }
 }
