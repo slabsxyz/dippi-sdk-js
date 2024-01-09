@@ -120,7 +120,7 @@ const dippiClient = new Dippi({
 });
 
 (async () => {
-    // Authenticate
+    // Authenticate Dippi Client
     const { accessToken } = await dippiClient.auth.login();
     dippiClient.setAuthToken(accessToken);
 
@@ -128,8 +128,71 @@ const dippiClient = new Dippi({
     const userId = 'yourUserId';
     const userProfile = await dippiClient.user.getProfile(userId);
 
+    // Create User Profile
+    const userProfileData: UserCreatePayload = {
+        email: 'your.email@example.com',
+        applicationId: 'yourApplicationId',
+        password: 'yourPassword',
+        authType: 'yourAuthType',
+        phone: 'yourPhoneNumber',
+    };
+    await dippiClient.user.createProfile(userProfileData);
+
+    // Authenticate User
+    const signInData: SignInPayload = {
+        email: 'your.email@example.com',
+        password: 'yourPassword',
+        token: 'yourToken',
+        applicationId: 'yourApplicationId',
+        countryCode: 'yourCountryCode',
+    };
+    await dippiClient.user.authenticate(signInData);
+
+    // Reset password for user
+    const resetPasswordData: ResetPasswordPayload = {
+        email: 'your.email@example.com',
+    };
+    await dippiClient.user.resetPassword(resetPasswordData);
+
+
     // List User Wallets
     const userWallets = await dippiClient.wallet.list();
+
+    // Create Wallet
+    const walletCreateData: WalletCreatePayload = {
+        ownerId: 'yourOwnerId',
+        walletType: 'yourWalletType',
+        isTestNet: true,
+        storeOption: 'email',
+        userCode: 'yourUserCode',
+        name: 'yourWalletName',
+        fromMnemonic: true,
+        mnemonicPhrase: 'yourMnemonicPhrase',
+        fromPrivateKey: true,
+        privateKey: 'yourPrivateKey',
+        useRecoveryPhrase: true,
+        recoveryPhrase: 'yourRecoveryPhrase',
+        repeatedRecoveryPhrase: 'yourRepeatedRecoveryPhrase',
+        useKeyppiProtocol: true,
+        useKeyppiTransactionInfluenciableWallets: true,
+        transactionInfluenciableWallets: 'yourTransactionInfluenciableWallets',
+        acceptTermsAndConditions: true,
+        environment: 'yourEnvironment',
+    };
+    await dippiClient.wallet.create(walletCreateData);
+
+    // Get NFTs
+    const getNFTsData: WalletGetNFTsPayload = {
+        address: 'yourWalletAddress',
+        chainId: 1, // Replace with actual chainId
+    };
+    await dippiCliente.wallet.getNFTs(getNFTsData);
+
+    // Get Balance
+    await dippiClient.wallet.getBalance('yourWalletAddress');
+
+    // Get Wallet Info
+    await dippiClient.wallet.getWalletInfo('yourWalletAddress');
 
     // List User Applications
     const userApplications = await dippiClient.application.list();
