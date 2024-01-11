@@ -27,6 +27,13 @@ export interface ResetPasswordPayload {
     email: string;
 }
 
+export interface ChangePasswordPayload {
+    userEmail: string;
+    oldPassword: string;
+    password: string;
+    repeatedPassword: string;
+}
+
 export interface SigninResponseBody {
     accessToken: string;
     refreshToken: string;
@@ -79,6 +86,7 @@ export interface User {
     createProfile(data: UserCreatePayload): Promise<UserResponseBody>;
     authenticate(data: SignInPayload): Promise<SigninResponseBody>;
     resetPassword(data: ResetPasswordPayload): Promise<any>;
+    changePassword(data: ChangePasswordPayload): Promise<any>;
 }
 
 export interface WalletCreatePayload {

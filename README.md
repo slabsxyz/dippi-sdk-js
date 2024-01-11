@@ -154,6 +154,14 @@ const dippiClient = new Dippi({
     };
     await dippiClient.user.resetPassword(resetPasswordData);
 
+    // Change password for user
+    const changePasswordData: ChangePasswordPayload = {
+        userEmail: 'your.email@example.com',
+        oldPassword: 'your_old_password',
+        password: 'your_new_password',
+        repeatedPassword: 'your_new_password',
+    };
+    await dippiClient.user.changePassword(changePasswordData);
 
     // List User Wallets
     const userWallets = await dippiClient.wallet.list();
