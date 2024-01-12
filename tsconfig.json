@@ -2,29 +2,18 @@
     "compilerOptions": {
         "baseUrl": "./",
         "paths": {
-            "*": [
-                "src/*"
-            ],
-            "interfaces/*": [
-                "src/interfaces/*"
-            ]
+            "*": ["src/*"],
+            "interfaces/*": ["src/interfaces/*"]
         },
         "target": "es6",
         "module": "commonjs",
         "strict": true,
         "esModuleInterop": true,
         "outDir": "dist",
-        "types": [
-            "jest",
-            "node"
-        ],
+        "types": ["jest", "node"],
         "moduleResolution": "node",
         "declaration": true
     },
-    "include": [
-        "src/**/*.ts"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
 }

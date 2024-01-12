@@ -7,7 +7,7 @@ import {
     WalletRecoveryPayload,
     WalletRecoveryResponseBody,
     WalletGetNFTsPayload,
-    OwnedNftsResponse
+    OwnedNftsResponse,
 } from '../interfaces/Dippi';
 
 class Wallet {
@@ -71,13 +71,16 @@ class Wallet {
      * }>} A promise that resolves to the balance of the wallet.
      */
     async getBalance(id: string): Promise<WalletResponseBody> {
-        const response = await fetch(`${this.client.url}/v1/wallets/${id}/balance`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${this.client.authToken}`,
+        const response = await fetch(
+            `${this.client.url}/v1/wallets/${id}/balance`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${this.client.authToken}`,
+                },
             },
-        });
+        );
 
         return await response.json();
     }
@@ -111,9 +114,7 @@ class Wallet {
      * @param {WalletCreatePayload} data - The data to create the wallet with.
      * @returns {Promise<WalletUpdateResponseBody>} A promise that resolves to the created wallet response body.
      */
-    async create(
-        data: WalletCreatePayload,
-    ): Promise<WalletResponseBody> {
+    async create(data: WalletCreatePayload): Promise<WalletResponseBody> {
         const response = await fetch(`${this.client.url}/v1/wallets/`, {
             method: 'POST',
             headers: {
@@ -128,21 +129,22 @@ class Wallet {
 
     /**
      * Retrieves NFTs owned by a wallet from a specific blockchain.
-     * 
+     *
      * @param data {WalletGetNFTsPayload} The payload containing the wallet and blockchain information.
      * @returns {Promise<OwnedNftsResponse>} A promise that resolves to the response containing the owned NFTs.
      */
-    async getNFTs(
-        data: WalletGetNFTsPayload,
-    ): Promise<OwnedNftsResponse> {
-        const response = await fetch(`${this.client.url}/v1/wallets/get-wallet-nfts-by-chain`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${this.client.authToken}`,
+    async getNFTs(data: WalletGetNFTsPayload): Promise<OwnedNftsResponse> {
+        const response = await fetch(
+            `${this.client.url}/v1/wallets/get-wallet-nfts-by-chain`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${this.client.authToken}`,
+                },
+                body: JSON.stringify(data),
             },
-            body: JSON.stringify(data),
-        });
+        );
 
         return await response.json();
     }
@@ -196,9 +198,9 @@ class Wallet {
 
     /**
      * Get NFTs from the Polygon network.
-     * 
+     *
      * @deprecated This method is deprecated due to the fact that it only retrieves NFTs from the Polygon network.
-     * @param id {string} 
+     * @param id {string}
      * @returns {Promise<any>}
      */
     async nfts(id: string): Promise<any> {
@@ -218,9 +220,9 @@ class Wallet {
 
     /**
      * Retrieve Wallet Info
-     * 
-     * @param id {string} 
-     * @param network {string} 
+     *
+     * @param id {string}
+     * @param network {string}
      * @returns {Promise<any>}
      */
     async getWalletInfo(id: string, network: string): Promise<any> {

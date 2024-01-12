@@ -3,8 +3,10 @@ import {
     UserResponseBody,
     UserCreatePayload,
     SignInPayload,
-    SigninResponseBody, 
-    ResetPasswordPayload} from '../interfaces/Dippi';
+    SigninResponseBody,
+    ResetPasswordPayload,
+    ChangePasswordPayload,
+} from '../interfaces/Dippi';
 
 class User {
     client: Client;
@@ -36,7 +38,7 @@ class User {
      *
      * @param {UserCreatePayload} data - The data to create the user profile with.
      * @returns {Promise<UserResponseBody>} A promise that resolves to the created user's profile response body.
-     */    
+     */
     async createProfile(data: UserCreatePayload): Promise<UserResponseBody> {
         const response = await fetch(`${this.client.url}/v1/users/`, {
             method: 'POST',
@@ -57,14 +59,17 @@ class User {
      * @returns {Promise<SigninResponseBody>} A promise that resolves to the sign-in response body.
      */
     async authenticate(data: SignInPayload): Promise<SigninResponseBody> {
-        const response = await fetch(`${this.client.url}/v1/auth/external-signin`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${this.client.authToken}`,
+        const response = await fetch(
+            `${this.client.url}/v1/auth/external-signin`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${this.client.authToken}`,
+                },
+                body: JSON.stringify(data),
             },
-            body: JSON.stringify(data),
-        });
+        );
 
         return await response.json();
     }
@@ -76,14 +81,39 @@ class User {
      * @returns {Promise<void>} A promise that resolves to a success message if completed.
      */
     async resetPassword(data: ResetPasswordPayload): Promise<void> {
-        const response = await fetch(`${this.client.url}/v1/auth/user-forgot-password`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${this.client.authToken}`,
+        const response = await fetch(
+            `${this.client.url}/v1/auth/user-forgot-password`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${this.client.authToken}`,
+                },
+                body: JSON.stringify(data),
             },
-            body: JSON.stringify(data),
-        });
+        );
+
+        return await response.json();
+    }
+
+    /**
+     * Changes password for user.
+     *
+     * @param {ChangePasswordPayload} data - The data needed for user authentication and password change.
+     * @returns {Promise<void>} A promise that resolves to a success message if completed.
+     */
+    async changePassword(data: ChangePasswordPayload): Promise<void> {
+        const response = await fetch(
+            `${this.client.url}/v1/auth/user-change-password`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${this.client.authToken}`,
+                },
+                body: JSON.stringify(data),
+            },
+        );
 
         return await response.json();
     }
