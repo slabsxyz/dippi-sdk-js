@@ -14,6 +14,7 @@ class User {
     constructor(client: Client) {
         this.client = client;
     }
+    
 
     /**
      * Retrieves the profile of a specific user by their ID.
