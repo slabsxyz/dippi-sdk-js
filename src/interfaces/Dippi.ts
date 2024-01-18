@@ -90,7 +90,7 @@ export interface User {
     getProfile(id: string): Promise<UserResponseBody | Error>;
     updateProfile(data: any): Promise<UserResponseBody | Error>; // TODO: Replace 'any' with the actual types of 'data'.
     createProfile(data: UserCreatePayload): Promise<UserResponseBody | Error>;
-    authenticate(data: SignInPayload): Promise<SigninResponseBody  | Error>;
+    authenticate(data: SignInPayload): Promise<UserResponseBody  | Error>;
     resetPassword(data: ResetPasswordPayload): Promise<any>;
     changePassword(data: ChangePasswordPayload): Promise<any>;
 }

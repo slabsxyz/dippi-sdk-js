@@ -81,9 +81,9 @@ class User {
      * Authenticates a user.
      *
      * @param {SignInPayload} data - The data needed for user authentication.
-     * @returns {Promise<SigninResponseBody | Error>} A promise that resolves to the sign-in response body.
+     * @returns {Promise<UserResponseBody | Error>} A promise that resolves to the sign-in response body.
      */
-    async authenticate(data: SignInPayload): Promise<SigninResponseBody | Error> {
+    async authenticate(data: SignInPayload): Promise<UserResponseBody | Error> {
         const response = await fetch(
             `${this.client.url}/v1/auth/external-signin`,
             {
