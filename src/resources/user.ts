@@ -6,6 +6,7 @@ import {
     SigninResponseBody,
     ResetPasswordPayload,
     ChangePasswordPayload,
+    Error,
 } from '../interfaces/Dippi';
 
 class User {
@@ -14,15 +15,14 @@ class User {
     constructor(client: Client) {
         this.client = client;
     }
-    
 
     /**
      * Retrieves the profile of a specific user by their ID.
      *
      * @param {string} id - The ID of the user to retrieve the profile for.
-     * @returns {Promise<UserResponseBody>} A promise that resolves to the user's profile response body.
+     * @returns {Promise<UserResponseBody | Error>} A promise that resolves to the user's profile response body.
      */
-    async getProfile(id: string): Promise<UserResponseBody> {
+    async getProfile(id: string): Promise<UserResponseBody | Error> {
         const response = await fetch(`${this.client.url}/v1/users/${id}`, {
             method: 'GET',
             headers: {
@@ -30,17 +30,29 @@ class User {
                 Authorization: `Bearer ${this.client.authToken}`,
             },
         });
-
-        return await response.json();
+        try {
+            const responseBody = await response.json();
+            if (responseBody.statusCode === 400) {
+                return {
+                    error: true,
+                    code: responseBody.statusCode,
+                    message: responseBody.message
+                };
+            }
+            return responseBody
+        } catch (error) {
+            throw error;
+        }
+        
     }
 
     /**
      * Creates a new user profile.
      *
      * @param {UserCreatePayload} data - The data to create the user profile with.
-     * @returns {Promise<UserResponseBody>} A promise that resolves to the created user's profile response body.
+     * @returns {Promise<UserResponseBody | Error>} A promise that resolves to the created user's profile response body.
      */
-    async createProfile(data: UserCreatePayload): Promise<UserResponseBody> {
+    async createProfile(data: UserCreatePayload): Promise<UserResponseBody | Error> {
         const response = await fetch(`${this.client.url}/v1/users/`, {
             method: 'POST',
             headers: {
@@ -49,17 +61,29 @@ class User {
             },
             body: JSON.stringify(data),
         });
-
-        return await response.json();
+        try {
+            const responseBody = await response.json();
+            if (responseBody.statusCode === 400) {
+                return {
+                    error: true,
+                    code: responseBody.statusCode,
+                    message: responseBody.message
+                };
+            }
+            return responseBody
+        } catch (error) {
+            throw error;
+        }
+        
     }
 
     /**
      * Authenticates a user.
      *
      * @param {SignInPayload} data - The data needed for user authentication.
-     * @returns {Promise<SigninResponseBody>} A promise that resolves to the sign-in response body.
+     * @returns {Promise<SigninResponseBody | Error>} A promise that resolves to the sign-in response body.
      */
-    async authenticate(data: SignInPayload): Promise<SigninResponseBody> {
+    async authenticate(data: SignInPayload): Promise<SigninResponseBody | Error> {
         const response = await fetch(
             `${this.client.url}/v1/auth/external-signin`,
             {
@@ -71,8 +95,22 @@ class User {
                 body: JSON.stringify(data),
             },
         );
+        
+        try {
+            const responseBody = await response.json();
+            
+            if (responseBody.statusCode === 400) {
+                return {
+                    error: true,
+                    code: responseBody.statusCode,
+                    message: responseBody.message
+                };
+            }
+            return responseBody;
+        } catch (error) {
+            throw error;
+        }
 
-        return await response.json();
     }
 
     /**
@@ -123,9 +161,9 @@ class User {
      * Authenticates a user.
      *
      * @param {SignInPayload} data - The data needed for user authentication.
-     * @returns {Promise<SigninResponseBody>} A promise that resolves to the sign-in response body.
+     * @returns {Promise<SigninResponseBody> | Error} A promise that resolves to the sign-in response body.
      */
-    async updateProfile(data: any): Promise<UserResponseBody> {
+    async updateProfile(data: any): Promise<UserResponseBody | Error> {
         const response = await fetch(`${this.client.url}/v1/me`, {
             method: 'PATCH',
             headers: {
@@ -135,7 +173,22 @@ class User {
             body: JSON.stringify(data),
         });
 
-        return await response.json();
+        
+        try {
+            const responseBody = await response.json();
+            
+            if (responseBody.statusCode === 400) {
+                return {
+                    error: true,
+                    code: responseBody.statusCode,
+                    message: responseBody.message
+                };
+            }
+            return responseBody;
+        } catch (error) {
+            throw error;
+        }
+
     }
 }
 

@@ -1,3 +1,9 @@
+export interface Error {
+    error:boolean
+    code: string;
+    message: string;
+}
+
 export interface ClientAuth {
     url: string;
     appToken: string;
