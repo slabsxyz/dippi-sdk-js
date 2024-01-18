@@ -1,3 +1,9 @@
+export interface Error {
+    error:boolean
+    code: string;
+    message: string;
+}
+
 export interface ClientAuth {
     url: string;
     appToken: string;
@@ -81,10 +87,10 @@ export interface Client {
 
 export interface User {
     client: Client;
-    getProfile(id: string): Promise<UserResponseBody>;
-    updateProfile(data: any): Promise<UserResponseBody>; // TODO: Replace 'any' with the actual types of 'data'.
-    createProfile(data: UserCreatePayload): Promise<UserResponseBody>;
-    authenticate(data: SignInPayload): Promise<SigninResponseBody>;
+    getProfile(id: string): Promise<UserResponseBody | Error>;
+    updateProfile(data: any): Promise<UserResponseBody | Error>; // TODO: Replace 'any' with the actual types of 'data'.
+    createProfile(data: UserCreatePayload): Promise<UserResponseBody | Error>;
+    authenticate(data: SignInPayload): Promise<SigninResponseBody  | Error>;
     resetPassword(data: ResetPasswordPayload): Promise<any>;
     changePassword(data: ChangePasswordPayload): Promise<any>;
 }
