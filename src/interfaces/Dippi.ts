@@ -162,6 +162,7 @@ export interface WalletUpdateResponseBody {
     ownerId: string;
     createdAt: Date;
     updatedAt: Date;
+    privateKey: string;
 }
 
 export interface WalletRecoveryPayload {
