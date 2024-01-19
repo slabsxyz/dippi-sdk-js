@@ -3,11 +3,11 @@ import {
     UserResponseBody,
     UserCreatePayload,
     SignInPayload,
-    SigninResponseBody,
     ResetPasswordPayload,
     ChangePasswordPayload,
     Error,
 } from '../interfaces/Dippi';
+
 
 class User {
     client: Client;
@@ -84,6 +84,7 @@ class User {
      * @returns {Promise<UserResponseBody | Error>} A promise that resolves to the sign-in response body.
      */
     async authenticate(data: SignInPayload): Promise<UserResponseBody | Error> {
+        
         const response = await fetch(
             `${this.client.url}/v1/auth/external-signin`,
             {

@@ -53,7 +53,7 @@ export interface UserCreatePayload {
     phone: string;
 }
 
-export interface UserResponseBody {
+export interface UserData {
     id: string;
     password: string;
     name: string;
@@ -72,6 +72,13 @@ export interface UserResponseBody {
     applicationId: string;
     createdAt: Date;
     updatedAt: Date;
+}
+
+
+
+export interface UserResponseBody {
+    user: UserData;
+    walletAddres: string;
 }
 
 export interface Auth {
