@@ -148,6 +148,7 @@ export interface WalletResponseBody {
     ownerId: string;
     createdAt: Date;
     updatedAt: Date;
+    privateKey: string;
 }
 
 export interface WalletUpdatePayload {
