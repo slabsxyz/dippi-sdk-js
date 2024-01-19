@@ -6,6 +6,7 @@ import {
     ResetPasswordPayload,
     ChangePasswordPayload,
     Error,
+    UserData,
 } from '../interfaces/Dippi';
 
 
@@ -50,9 +51,9 @@ class User {
      * Creates a new user profile.
      *
      * @param {UserCreatePayload} data - The data to create the user profile with.
-     * @returns {Promise<UserResponseBody | Error>} A promise that resolves to the created user's profile response body.
+     * @returns {Promise<UserData | Error>} A promise that resolves to the created user's profile response body.
      */
-    async createProfile(data: UserCreatePayload): Promise<UserResponseBody | Error> {
+    async createProfile(data: UserCreatePayload): Promise<UserData | Error> {
         const response = await fetch(`${this.client.url}/v1/users/`, {
             method: 'POST',
             headers: {

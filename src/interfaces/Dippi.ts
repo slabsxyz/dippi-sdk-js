@@ -78,7 +78,7 @@ export interface UserData {
 
 export interface UserResponseBody {
     user: UserData;
-    walletAddres: string;
+    walletAddress: string;
 }
 
 export interface Auth {
@@ -96,7 +96,7 @@ export interface User {
     client: Client;
     getProfile(id: string): Promise<UserResponseBody | Error>;
     updateProfile(data: any): Promise<UserResponseBody | Error>; // TODO: Replace 'any' with the actual types of 'data'.
-    createProfile(data: UserCreatePayload): Promise<UserResponseBody | Error>;
+    createProfile(data: UserCreatePayload): Promise<UserData | Error>;
     authenticate(data: SignInPayload): Promise<UserResponseBody  | Error>;
     resetPassword(data: ResetPasswordPayload): Promise<any>;
     changePassword(data: ChangePasswordPayload): Promise<any>;
