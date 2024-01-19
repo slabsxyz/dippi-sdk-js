@@ -31,6 +31,7 @@ describe('Wallet', () => {
             ownerId: 'string',
             createdAt: new Date(),
             updatedAt: new Date(),
+            privateKey: 'string', // Add the privateKey property
         };
         expect(wallet.getWalletInfo('testId', 'testNetwork')).toBe(walletInfo);
     });
