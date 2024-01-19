@@ -21,9 +21,9 @@ class User {
      * Retrieves the profile of a specific user by their ID.
      *
      * @param {string} id - The ID of the user to retrieve the profile for.
-     * @returns {Promise<UserResponseBody | Error>} A promise that resolves to the user's profile response body.
+     * @returns {Promise<UserData | Error>} A promise that resolves to the user's profile response body.
      */
-    async getProfile(id: string): Promise<UserResponseBody | Error> {
+    async getProfile(id: string): Promise<UserData | Error> {
         const response = await fetch(`${this.client.url}/v1/users/${id}`, {
             method: 'GET',
             headers: {

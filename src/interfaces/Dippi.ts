@@ -94,7 +94,7 @@ export interface Client {
 
 export interface User {
     client: Client;
-    getProfile(id: string): Promise<UserResponseBody | Error>;
+    getProfile(id: string): Promise<UserData | Error>;
     updateProfile(data: any): Promise<UserResponseBody | Error>; // TODO: Replace 'any' with the actual types of 'data'.
     createProfile(data: UserCreatePayload): Promise<UserData | Error>;
     authenticate(data: SignInPayload): Promise<UserResponseBody  | Error>;
