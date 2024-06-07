@@ -1,11 +1,11 @@
-# Dippi SDK for JS
+# Security Labs Wallet SDK for JS
 
-This is the Dippi SDK for JavaScript, providing a wrapper around the Dippi API.
+This is the Security Labs SDK for JavaScript, providing a wrapper around the Security Labs API.
 
 ## Installation
 
 ```bash
-npm i @dippixyz/base
+npm i @slabsxyz/base
 ```
 
 ## Usage
@@ -43,7 +43,7 @@ To use the Dippi Client, follow the steps below:
 1. **Initialization**:
 
     ```js
-    const { Dippi, TBA } = require('@dippixyz/base');
+    const { Dippi, TBA } = require('@slabsxyz/base');
 
     const dippiClient = new Dippi({
         appToken: [appToken],
@@ -110,7 +110,7 @@ To utilize the Token Bound Account (TBA) Class:
 Below is an example of how you can utilize the Dippi SDK and the TBA feature in a simple Node.js application.
 
 ```js
-const { Dippi, TBA } = require('@dippixyz/base');
+const { Dippi, TBA } = require('@slabsxyz/base');
 
 // Initialize Dippi Client
 const dippiClient = new Dippi({

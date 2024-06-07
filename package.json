@@ -1,13 +1,16 @@
 {
-    "name": "@dippixyz/base",
+    "name": "@slabsxyz/base-wallet-sdk",
     "version": "1.2.8",
-    "description": "Dippi SDK",
+    "description": "Security Labs's wallet creation SDK",
     "main": "dist/index.js",
     "files": [
         "dist/"
     ],
     "types": "dist/dippi.d.ts",
-    "repository": "https://github.com/dippixyz/dippi-sdk-js.git",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/slabsxyz/dippi-sdk-js.git"
+    },
     "author": "victor@dippi.xyz & jose@dippi.xyz & ata@dippi.xyz",
     "license": "MIT",
     "devDependencies": {
